@@ -24,7 +24,7 @@ feature_names = [
 ]
 
 # Streamlit 名字
-st.title("Heart Disease Predictor")
+st.title("Acute coronary syndrome 3-year mortality predictor")
 model_path1 = 'min_max_RFrfrfrfrrwhy112.pkl'
 min_max_scaler = joblib.load(model_path1 )
 # User inputs
@@ -63,7 +63,7 @@ if st.button("Predict"):
 
     # SHAP Explanation for class 0
     st.subheader(
-        f"Based on feature values, predicted probability of one-year mortality is: **{probability_class_0:.1f}%**")
+        f"Based on feature values,the predicted 3-year mortality rate of acute coronary syndrome is: **{probability_class_0:.1f}%**")
     explainer_shap = shap.KernelExplainer(model.predict_proba, background_data_scaled)
     shap_values = explainer_shap(pd.DataFrame(features, columns=feature_names))
 
